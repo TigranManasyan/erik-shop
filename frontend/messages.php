@@ -23,6 +23,12 @@
                 case 'post_fail':
                     echo "<div class='alert alert-warning'>" . $_SESSION['msg']['text'] . "</div>";
                     break;
+                case 'category_exists':
+                    echo "<div class='alert alert-warning'>" . $_SESSION['msg']['text'] . "</div>";
+                    break;
+                case 'create_success':
+                    echo "<div class='alert alert-success'>" . $_SESSION['msg']['text'] . "</div>";
+                    break;
             }
             unset($_SESSION['msg']);
         }

@@ -10,14 +10,21 @@
             $user = mysqli_fetch_assoc($query_user);
             if(password_verify($password, $user['password'])){
                 $_SESSION['user'] = $user;
-                header("location:./profile.php");
+                if($user['role_id'] == 1) {
+                    $_SESSION['user_role'] = 'admin';
+                    header("location:./../frontend/admin/dashboard.php");
+                } else{
+                    $_SESSION['user_role'] = 'user';
+                    header("location:./../frontend/profile.php");
+                }
+
                 exit;
             } else {
                 $_SESSION['msg'] = [
                     'type' => 'login_fail',
                     'text' => 'Սխալ մուտքանուն կամ ծածկագիր'
                 ];
-                header("location:./index.php");
+                header("location:./../frontend/index.php");
                 exit;
             }
         } else {
@@ -25,7 +32,7 @@
                 'type' => 'login_fail',
                 'text' => 'Սխալ մուտքանուն կամ ծածկագիր'
             ];
-            header("location:./index.php");
+            header("location:./../frontend/index.php");
             exit;
         }
     }

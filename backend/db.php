@@ -3,5 +3,5 @@ $conn = mysqli_connect(
     'localhost', //hostname
     'root', //username
     '', //password
-    'blog' //db_name
+    'shop' //db_name
 );

@@ -2,4 +2,5 @@ git init - initialization (նախագիծը կցում ենք git–ին)
 git add file_name տեղադրում ենք մեկ ֆայլ
 git add . տեղադրում ենք բոլոր ֆայլերը
 git commit -m "Online Shop"
-git status
+git status - ցույց է տալիս կարգավիճակը
+git push – git-ից տեղափոխում է github

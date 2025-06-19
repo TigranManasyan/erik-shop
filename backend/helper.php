@@ -4,3 +4,8 @@ function dd($data) {
     print_r($data);
     echo "</pre>";
 }
+
+function field($text)
+{
+    return trim(mysqli_real_escape_string($GLOBALS['conn'], htmlspecialchars($text)));
+}
