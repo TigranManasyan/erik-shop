@@ -1,6 +1,5 @@
 <?php
 include("./ifAdmin.php");
-include("./../../../backend/db.php");
 
 ?>
 

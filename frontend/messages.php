@@ -29,6 +29,9 @@
                 case 'create_success':
                     echo "<div class='alert alert-success'>" . $_SESSION['msg']['text'] . "</div>";
                     break;
+                case 'warning':
+                    echo "<div class='alert alert-warning'>" . $_SESSION['msg']['text'] . "</div>";
+                    break;
             }
             unset($_SESSION['msg']);
         }

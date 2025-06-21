@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Categories</title>
     <?php include("./../../bootstrap.php"); ?>
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
 </head>
 <body>
     <div class="container">
@@ -34,8 +35,8 @@
                             </div>
                             <div class="card-body">
                                 <?php if($category['user_id'] == $_SESSION['user']['id']): ?>
-                                    <a class="btn btn-success btn-sm" href="./edit.php">Edit</a>
-                                    <a class="btn btn-danger btn-sm" href="#">Delete</a>
+                                    <a class="btn btn-success btn-sm" href="./edit.php?id=<?= $category['id'] ?> ">Edit</a>
+                                    <a data-id="<?= $category['id'] ?>" class="del btn btn-danger btn-sm" href="#">Delete</a>
                                 <?php else: ?>
                                     <p>Not action</p>
                                 <?php endif; ?>
@@ -46,5 +47,29 @@
             </div>
         </div>
     </div>
+    <script>
+        jQuery(document).ready(function($) {
+            $(".del").click(function(e) {
+                e.preventDefault();
+
+                if(!confirm("Delete?")) {
+                    return;
+                }
+                let id = $(this).data('id');
+                $.ajax({
+                    url:'./../../../backend/admin/category/delete.php',
+                    method:'get',
+                    data:{id},
+                    dataType:'json',
+                    success:function(response) {
+                        if(response.status == 200) {
+                            alert(response.message);
+                            location.reload();
+                        }
+                    }
+                })
+            });
+        })
+    </script>
 </body>
 </html>

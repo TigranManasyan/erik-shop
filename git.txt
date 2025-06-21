@@ -4,3 +4,9 @@ git add . տեղադրում ենք բոլոր ֆայլերը
 git commit -m "Online Shop"
 git status - ցույց է տալիս կարգավիճակը
 git push – git-ից տեղափոխում է github
+
+git branch - ցույց է տալիս բոլոր branch-երը
+git branch new_branch_name - ստեղծում է նոր branch
+git checkout branch_name - փոխում է branch-ը
+git clone repo_link կլոնավորում է տվյալ ռեպոն
+git pull - փոփոխությունների ցուցադրում/բեռնում
