@@ -19,6 +19,7 @@ if(isset($_POST['name'])
     $user_id = $_SESSION['user']['id'];
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
     if(!in_array($ext, array("jpg", "jpeg", "png"))){
+
         $_SESSION['image_format'] = 'Format image is jpg, jpeg or png';
         header('location: ./../../../frontend/admin/product/create.php');
         exit;

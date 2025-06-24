@@ -2,36 +2,45 @@
 include "./../../db.php";
 include "./../../helper.php";
 session_start();
-if(isset($_POST['name']) && isset($_POST['description'])) {
+$upload_dir = './../../../backend/admin/uploads';
+if(isset($_POST['name'])
+    && isset($_POST['description'])
+    && isset($_POST['price'])
+    && isset($_POST['category_id'])
+    && isset($_POST['qty'])
+) {
+    $id = $_POST['id'];
+    $res = mysqli_query($conn, "SELECT image from products where id = $id");
+    $product = mysqli_fetch_assoc($res);
+    $file_name = $product['image'];
     $name = $_POST['name'];
+    $price = $_POST['price'];
+    $category_id = $_POST['category_id'];
+    $qty = $_POST['qty'];
     $description = $_POST['description'];
-    $unique_query = mysqli_query($conn, "SELECT * FROM categories WHERE name = '$name'");
-    if(mysqli_num_rows($unique_query) > 0) {
-        $_SESSION['msg'] = [
-            'type' => 'category_exists',
-            'text' => 'Նշված անունով կատեգորիան արդեն գոյություն ունի'
-        ];
-        header('location: ./../../../frontend/admin/category/create.php');
-        exit;
-    }
-
-    if(!empty($_POST['name'])) {
-        $name = $_POST['name'];
-        $category_id = $_POST['category_id'];
-        $user_id = $_SESSION['user']['id'];
-        $new_category_query = mysqli_query($conn, "UPDATE categories SET name='$name', description='$description' WHERE id=$category_id");
-        if($new_category_query) {
-            $_SESSION['msg'] = [
-                'type' => 'create_success',
-                'text' => 'Կատեգորիան հաջողությամբ թարմացվել է'
-            ];
-            header('location: ./../../../frontend/admin/category/index.php');
+    $user_id = $_SESSION['user']['id'];
+    if(!empty($_FILES['image']['name'])) {
+        $file = $_FILES['image'];
+        if(file_exists("./../uploads/$file_name")) {
+            unlink("./../uploads/$file_name");
+        }
+        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+        if(!in_array($ext, array("jpg", "jpeg", "png"))){
+            $_SESSION['image_format'] = 'Format image is jpg, jpeg or png';
+            header('location: ./../../../frontend/admin/product/edit.php?id='.$id);
             exit;
         }
-    } else {
-        $_SESSION['required_field'] = 'Այս դաշտը պարտադիր պետք է լրացնել';
-        header('location: ./../../../frontend/admin/category/create.php');
-        exit;
+        $file_name = time() . '_' . $_SESSION['user']['id'] . '.' . $ext;
+        move_uploaded_file($file['tmp_name'], $upload_dir . '/' . $file_name);
     }
+        $sql = "UPDATE products SET name = '$name', price=$price, category_id = $category_id, qty = $qty, description='$description', image='$file_name' WHERE id = $id";
 
+        if(query($sql)) {
+            $_SESSION['msg'] = [
+                'type' => 'create_success',
+                'text' => 'Product has been updated successfully!'
+            ];
+            header('location: ./../../../frontend/admin/product/index.php');
+            exit;
+        }
 }
