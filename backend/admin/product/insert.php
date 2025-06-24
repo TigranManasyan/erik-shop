@@ -31,7 +31,7 @@ if(isset($_POST['name'])
         if(query("INSERT INTO products (user_id, name, price, category_id, qty, description, image) VALUES ($user_id, '$name', $price, $category_id, $qty, '$description', '$file_name')")) {
             $_SESSION['msg'] = [
                 'type' => 'create_success',
-                'text' => 'Product has ben created'
+                'text' => 'Product has been created'
             ];
             header('location: ./../../../frontend/admin/product/index.php');
             exit;

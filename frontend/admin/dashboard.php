@@ -17,6 +17,7 @@ include("./ifAdmin.php"); ?>
     <div class="row">
         <div class="col-md-12 d-flex">
             <a href="./category/index.php">Categories</a>
+            <a href="./product/index.php">Products</a>
         </div>
     </div>
 </div>
