@@ -64,6 +64,18 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
                     </div>
 
                     <div class="form-group mt-3">
+                        <label for="is_active" class="form-label">Choose Active <sup style="color:red;font-size: 16px"> *</sup></label>
+                        <select name="is_active"  id="is_active" class="form-control">
+                            <option  disabled selected>-- Select Active --</option>
+                                <option value="<?= 1?>"><?= "Yes" ?></option>
+                                <option value="<?= 0 ?>"><?= "No" ?></option>
+                        </select>
+                        <?php if(isset($_SESSION['required_field'])): ?>
+                            <p style="font:italic 12px Tahoma" class="text-danger"><?= $_SESSION['required_field']; ?></p>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="form-group mt-3">
                         <label for="image" class="form-label">Product image <sup style="color:red;font-size: 16px"> *</sup></label>
                         <input id="image" name="image" type="file"  class="form-control">
                         <?php if(isset($_SESSION['required_field'])): ?>

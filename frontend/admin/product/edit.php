@@ -59,17 +59,27 @@ if(isset($_GET["id"])){
                         <p style="font:italic 12px Tahoma" class="text-danger"><?= $_SESSION['required_field']; ?></p>
                     <?php endif; ?>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Product Price</span>
-                    <input type="text" name="price" class="form-control" value="<?= $product['price'] ?>" placeholder="Price" aria-label="Username" aria-describedby="basic-addon1">
+                <div class="form-group mb-3">
+                    <label class="form-label" for="price">Product Price</label>
+                    <input type="number" name="price" class="form-control" value="<?= $product['price'] ?>" placeholder="Price" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Product Quantity</span>
-                    <input type="text" name="qty" class="form-control" value="<?= $product['qty'] ?>" placeholder="Quantity" aria-label="Username" aria-describedby="basic-addon1">
+                <div class="form-group mb-3">
+                    <label class="form-label" for="qty">Product Quantity</label>
+                    <input type="number" name="qty" class="form-control" value="<?= $product['qty'] ?>" placeholder="Quantity" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <div class="input-group">
-                    <span class="input-group-text">Description</span>
+                <div class="form-group mb-3">
+                    <label for="is_active" class="form-label">Active<sup style="color:red;font-size: 16px"> *</sup></label>
+                    <select name="is_active"  id="is_active" class="form-control">
+                       <option <?php if($product['is_active'] == 1) { echo "selected"; } ?> value="<?= 1?>"><?= "Yes" ?></option>
+                            <option <?php if($product['is_active'] == 0) { echo "selected"; } ?> value="<?= 0 ?>"><?= "No" ?></option>
+                    </select>
+                    <?php if(isset($_SESSION['required_field'])): ?>
+                        <p style="font:italic 12px Tahoma" class="text-danger"><?= $_SESSION['required_field']; ?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="description">Description</label>
                     <textarea name="description" class="form-control" aria-label="With textarea"><?= $product['description'] ?></textarea>
                 </div>
                 <button class="btn btn-primary btn-sm">Save</button>

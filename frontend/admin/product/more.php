@@ -15,6 +15,11 @@ if(isset($_GET['id'])){
         $message = "The product doesn't exist";
     }
 }
+if($product['is_active'] == 1){
+    $active_product = "Yes";
+}else{
+       $active_product = "No";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +37,10 @@ if(isset($_GET['id'])){
     <p>Category` <?= $product['category'] ?></p>
     <p>Price` <?= $product['price'] ?>AMD</p>
     <p>Quantity` <?= $product['qty'] ?></p>
+    <p>Description` <?= $product['description'] ?></p>
+    <p>Active` <?=$active_product?></p>
     <p>Created by` <?= $product['author_first_name'] ?> <?= $product['author_last_name'] ?></p>
+    
     <a href="./edit.php?id=<?=$product['id']?>" class="btn btn-success btn-sm">Edit</a>
     <a href="#" class="btn btn-danger btn-sm del">Delete</a>
 </div>

@@ -8,6 +8,7 @@ if(isset($_POST['name'])
     && isset($_POST['price'])
     && isset($_POST['category_id'])
     && isset($_POST['qty'])
+    && isset($_POST['is_active'])
 ) {
     $id = $_POST['id'];
     $res = mysqli_query($conn, "SELECT image from products where id = $id");
@@ -17,6 +18,7 @@ if(isset($_POST['name'])
     $price = $_POST['price'];
     $category_id = $_POST['category_id'];
     $qty = $_POST['qty'];
+    $is_active = $_POST['is_active'];
     $description = $_POST['description'];
     $user_id = $_SESSION['user']['id'];
     if(!empty($_FILES['image']['name'])) {
@@ -33,7 +35,7 @@ if(isset($_POST['name'])
         $file_name = time() . '_' . $_SESSION['user']['id'] . '.' . $ext;
         move_uploaded_file($file['tmp_name'], $upload_dir . '/' . $file_name);
     }
-        $sql = "UPDATE products SET name = '$name', price=$price, category_id = $category_id, qty = $qty, description='$description', image='$file_name' WHERE id = $id";
+        $sql = "UPDATE products SET name = '$name', price=$price, category_id = $category_id, qty = $qty, is_active = $is_active, description='$description', image='$file_name' WHERE id = $id";
 
         if(query($sql)) {
             $_SESSION['msg'] = [
