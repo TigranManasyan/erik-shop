@@ -17,7 +17,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 d-flex justify-content-between align-items-baseline">
-                <h3>Products</h3>
+                <h3>Products 
+                <?php    if(isset($_SESSION['edited_field'])){
+                            $saved = $_SESSION['edited_field'];
+                            echo $saved;
+                            }?>
+</h3>
                 <a class="btn btn-primary btn-sm" href="./create.php">Create New Product</a>
             </div>
             <div class="row">
@@ -47,7 +52,7 @@
                             <td>${product.product_name}</td>
                             <td>${product.category_name}</td>
                             <td>
-                                <a href="" class="btn btn-primary btn-sm">More</a>
+                                <a class="btn btn-primary btn-sm" href="./more.php?id=${product.id}&img=${product.image}">More</a>
                             </td>
                         </tr>
                     `)

@@ -3,9 +3,11 @@ include("./ifAdmin.php");
 include("./../../../backend/db.php");
 if(isset($_GET["id"])){
     $id = $_GET['id'];
-    $res = mysqli_query($conn, "SELECT * FROM categories WHERE id = $id");
+    $res = mysqli_query($conn, "SELECT * FROM products WHERE id = $id");
+    $res1 = mysqli_query($conn, "SELECT * FROM categories");
+    $categories = mysqli_fetch_all($res1, MYSQLI_ASSOC);
     if(mysqli_num_rows($res) > 0) {
-        $category = mysqli_fetch_assoc($res);
+        $product = mysqli_fetch_assoc($res);
     } else {
         $_SESSION['msg'] = [
             'type' => 'warning',
@@ -27,33 +29,56 @@ if(isset($_GET["id"])){
     <?php include("./../../bootstrap.php"); ?>
 </head>
 <body>
+
+
 <div class="container">
     <div class="row">
-        <div class="col-md-12 d-flex justify-content-between align-items-baseline">
-            <h3>Edit Category</h3>
-            <a class="btn btn-secondary btn-sm" href="./index.php">All Categories</a>
-        </div>
-        <div class="row">
-            <?php include("./../../messages.php");?>
-            <div class="col-md-12">
-                <form action="./../../../backend/admin/category/update.php" method="post">
-                    <input type="hidden" name="category_id" value="<?= $category['id'] ?>">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Category name <sup style="color:red;font-size: 16px"> *</sup></label>
-                        <input id="name" name="name" type="text" class="form-control" value="<?= $category['name'] ?>" placeholder="Category">
-                        <?php if(isset($_SESSION['required_field'])): ?>
-                            <p style="font:italic 12px Tahoma" class="text-danger"><?= $_SESSION['required_field']; ?></p>
-                        <?php endif; ?>
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="description" class="form-label">Category description</label>
-                        <textarea name="description" id="description" style="resize: none" cols="30" rows="5" class="form-control" placeholder="Description body"><?= $category['description'] ?></textarea>
-                    </div>
-                    <button class="mt-2 btn btn-primary btn-sm">Save</button>
-                </form>
+        <div class="col-md-12">
+            <h2 style="text-align:center">Edit Product</h2>
+            <div style="text-align:center">
+                <img style="width: 300px;" src="./../../../backend/admin/uploads/<?= $product['image'];?>">
             </div>
+            <form action="./../../../backend/admin/product/update.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?=$product['id']?>">
+                <div class="form-group mb-3">
+                    <label class="form-label" for="image">Product Image</label>
+                    <input type="file" name="image" class="form-control"  >
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="name">Product Name</label>
+                    <input type="text" name="name" class="form-control" value="<?= $product['name']?>" placeholder="Product" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="category_id" class="form-label">Choose Category name <sup style="color:red;font-size: 16px"> *</sup></label>
+                    <select name="category_id"  id="category_id" class="form-control">
+                        <?php foreach ($categories as $category): ?>
+                            <option <?php if($category['id'] == $product['category_id']) { echo "selected"; } ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?php if(isset($_SESSION['required_field'])): ?>
+                        <p style="font:italic 12px Tahoma" class="text-danger"><?= $_SESSION['required_field']; ?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Product Price</span>
+                    <input type="text" name="price" class="form-control" value="<?= $product['price'] ?>" placeholder="Price" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Product Quantity</span>
+                    <input type="text" name="qty" class="form-control" value="<?= $product['qty'] ?>" placeholder="Quantity" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Description</span>
+                    <textarea name="description" class="form-control" aria-label="With textarea"><?= $product['description'] ?></textarea>
+                </div>
+                <button class="btn btn-primary btn-sm">Save</button>
+            </form>
         </div>
     </div>
 </div>
+
+
+
 </body>
 </html>

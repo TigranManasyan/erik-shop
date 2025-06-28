@@ -19,6 +19,7 @@ if(isset($_POST['name'])
     $user_id = $_SESSION['user']['id'];
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
     if(!in_array($ext, array("jpg", "jpeg", "png"))){
+
         $_SESSION['image_format'] = 'Format image is jpg, jpeg or png';
         header('location: ./../../../frontend/admin/product/create.php');
         exit;
@@ -31,7 +32,7 @@ if(isset($_POST['name'])
         if(query("INSERT INTO products (user_id, name, price, category_id, qty, description, image) VALUES ($user_id, '$name', $price, $category_id, $qty, '$description', '$file_name')")) {
             $_SESSION['msg'] = [
                 'type' => 'create_success',
-                'text' => 'Product has ben created'
+                'text' => 'Product has been created'
             ];
             header('location: ./../../../frontend/admin/product/index.php');
             exit;
