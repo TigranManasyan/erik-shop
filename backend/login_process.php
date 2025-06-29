@@ -15,7 +15,7 @@
                     header("location:./../frontend/admin/dashboard.php");
                 } else{
                     $_SESSION['user_role'] = 'user';
-                    header("location:./../frontend/profile.php");
+                    header("location:./../frontend/user/profile.php");
                 }
 
                 exit;

@@ -16,8 +16,11 @@ include("./ifAdmin.php"); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-12 d-flex">
-            <a href="./category/index.php">Categories</a>
-            <a href="./product/index.php">Products</a>
+            <ul>
+                <li><a href="./category/index.php">Categories</a> </li>
+                <li><a href="./product/index.php">Products</a></li>
+                <li><a href="./../../backend/logout_process.php">Logout</a></li>
+            </ul>
         </div>
     </div>
 </div>

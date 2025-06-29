@@ -7,16 +7,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./profile.php">ԳԼԽԱՎՈՐ</a>
+                    <a class="nav-link active" aria-current="page" href="http://localhost/time_to_code_lessons/Erik/shop/frontend/user/profile.php">ԳԼԽԱՎՈՐ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./other_posts.php">Հրապարակումներ</a>
+                    <a class="nav-link active" aria-current="page" href="http://localhost/time_to_code_lessons/Erik/shop/frontend/user/product/index.php">ԱՊՐԱՆՔՆԵՐ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true" href="./logout_process.php"><?php echo $user['name']; ?></a>
+                    <a class="nav-link disabled" aria-disabled="true" href="#"><?= $user['first_name']; ?> <?= $user['last_name']; ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./logout_process.php">Դուրս Գալ</a>
+                    <a class="nav-link" href="./../../backend/logout_process.php">Դուրս Գալ</a>
                 </li>
             </ul>
 <!--            <form class="d-flex" role="search">-->

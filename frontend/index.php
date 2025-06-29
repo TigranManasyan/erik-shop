@@ -30,15 +30,12 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                 </div>
-                <div class="text-center mt-2 mb-2">
-                    <a href="./register.php">Create account</a>
-                </div>
                 <button class="btn btn-primary">Sign In</button>
             </form>
         </div>
         <div class="col-md-4"></div>
     </div>
 </div>
-<script src="./js/main.js"></script>
+<script src="./dist/js/main.js"></script>
 </body>
 </html>
