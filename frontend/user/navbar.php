@@ -16,13 +16,25 @@
                     <a class="nav-link disabled" aria-disabled="true" href="#"><?= $user['first_name']; ?> <?= $user['last_name']; ?></a>
                 </li>
                 <li class="nav-item">
+                    <a href="http://localhost/time_to_code_lessons/Erik/shop/frontend/user/cart/index.php" class="nav-link" >My Cart <span id="cart_count">0</span></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="./../../backend/logout_process.php">Դուրս Գալ</a>
                 </li>
             </ul>
-<!--            <form class="d-flex" role="search">-->
-<!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>-->
-<!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--            </form>-->
         </div>
     </div>
 </nav>
+<script>
+    jQuery(document).ready(function($) {
+        $.ajax({
+            url:'http://localhost/time_to_code_lessons/Erik/shop/backend/user/product/select_cart_items.php',
+            method:'get',
+            dataType:'json',
+            data:{action:'get_cart_count'},
+            success:function(response) {
+                $("#cart_count").html(response.cart_count);
+            }
+        })
+    })
+</script>

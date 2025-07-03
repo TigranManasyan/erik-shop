@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="aaa82c64-05dc-4b07-bcfa-9b7e099090d6" name="aparantan" url="http://46.17.175.70">
+        <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="ba46016b-34b2-4a02-9174-2453adfde541" name="imandco" url="http://46.17.175.70">
+        <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="de441157-9d8e-4914-82ef-358c7c086ddb" name="rvr" url="http://46.17.175.70">
+        <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
