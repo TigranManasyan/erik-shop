@@ -34,7 +34,7 @@
                     <input value="<?php echo isset($_SESSION['input_password']) ? $_SESSION['input_password'] : ''; ?>" type="password" name="password" id="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="text-center mt-2 mb-2">
-                    <a href="./index.php" class="text-center">Account Exists?</a>
+                    <a href="admin/index.php" class="text-center">Account Exists?</a>
                 </div>
                 <button class="btn btn-success">Sign Up</button>
             </form>

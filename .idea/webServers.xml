@@ -23,6 +23,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="5b1d80f4-bffb-49a3-bcec-1b1647578212" name="gp25" url="http://46.17.175.70">
+        <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
