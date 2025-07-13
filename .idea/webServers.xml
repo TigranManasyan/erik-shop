@@ -2,21 +2,40 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
+<<<<<<< HEAD
       <webServer id="6fb21d9e-6026-4607-bcb2-5e63101289de" name="aparantan" url="http://46.17.175.70">
+=======
+      <webServer id="aaa82c64-05dc-4b07-bcfa-9b7e099090d6" name="aparantan" url="http://46.17.175.70">
+>>>>>>> erik
         <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
+<<<<<<< HEAD
       <webServer id="1d618e8d-b12e-42a7-838b-946fb93cfc94" name="gp25" url="http://46.17.175.70">
+=======
+      <webServer id="ba46016b-34b2-4a02-9174-2453adfde541" name="imandco" url="http://46.17.175.70">
+>>>>>>> erik
         <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
+<<<<<<< HEAD
       <webServer id="e548007b-e597-4b4b-8671-72fb08473366" name="imandco" url="http://46.17.175.70">
+=======
+      <webServer id="de441157-9d8e-4914-82ef-358c7c086ddb" name="rvr" url="http://46.17.175.70">
+        <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="5b1d80f4-bffb-49a3-bcec-1b1647578212" name="gp25" url="http://46.17.175.70">
+>>>>>>> erik
         <fileTransfer rootFolder="/public_html" host="46.17.175.70" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

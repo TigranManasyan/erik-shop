@@ -20,8 +20,8 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <h2 class="text-center mt-2 mb-2">SING IN</h2>
-            <?php include "./messages.php"; ?>
-            <form action="./../backend/login_process.php" method="post">
+            <?php include "./../messages.php"; ?>
+            <form action="./../../backend/login_process.php" method="post">
                 <div class="form-group">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="example@gmail.com">
@@ -30,15 +30,12 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                 </div>
-                <div class="text-center mt-2 mb-2">
-                    <a href="./register.php">Create account</a>
-                </div>
                 <button class="btn btn-primary">Sign In</button>
             </form>
         </div>
         <div class="col-md-4"></div>
     </div>
 </div>
-<script src="./js/main.js"></script>
+<script src="../dist/js/main.js"></script>
 </body>
 </html>

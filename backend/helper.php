@@ -13,3 +13,11 @@ function field($text)
 function query($query) {
     return mysqli_query($GLOBALS['conn'], $query);
 }
+function random_code($length) {
+    $str = '0123456789';
+    $output = '';
+    for($i = 0; $i < $length; $i++) {
+        $output .= $str[rand(0, strlen($str) - 1)];
+    }
+    return $output;
+}
